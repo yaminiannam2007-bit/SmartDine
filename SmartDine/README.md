@@ -23,7 +23,8 @@ If PowerShell blocks `npm`, use `npm.cmd` exactly as shown.
 - Customer: http://localhost:3000/?table=1
 - Staff dashboard: http://localhost:3000/staff
 - Kitchen dashboard: http://localhost:3000/kitchen
-- QR code page: http://localhost:3000/qr
+- Food safety awareness guide: open the Food Safety section on the customer homepage
+- QR code page: http://localhost:3000/qr\n- Visible table QR section on the customer homepage\n- Food photos load from Unsplash (internet connection required)
 
 The database is created automatically in `data/smartdine.db`. Orders remain saved after restarting the server.
 
@@ -33,5 +34,7 @@ The database is created automatically in `data/smartdine.db`. Orders remain save
 3. Open the kitchen dashboard and update the order to Preparing / Ready.
 4. Open the staff dashboard to view orders and mark them Served.
 5. Customer order status refreshes automatically.
+
+The Food Safety guide is educational guidance only; it does not detect adulteration or certify food safety. Laboratory confirmation is required.
 
 This is a college-project demonstration. For real deployment, add authentication, payment integration, HTTPS, input hardening and restaurant-specific configuration.

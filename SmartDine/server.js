@@ -110,6 +110,15 @@ app.patch("/api/orders/:id/status", (req,res) => {
   if (!result.changes) return res.status(404).json({error:"Order not found"});
   res.json({ok:true});
 });
+app.get("/api/qr.png", async (req,res) => {
+  const table = String(req.query.table || "1").replace(/[^a-zA-Z0-9-]/g,"").slice(0,20) || "1";
+  const origin = `${req.protocol}://${req.get("host")}`;
+  const target = `${origin}/?table=${encodeURIComponent(table)}`;
+  try {
+    const png = await QRCode.toBuffer(target,{type:"png",width:360,margin:2,color:{dark:"#17231f",light:"#ffffff"}});
+    res.set("Content-Type","image/png").send(png);
+  } catch(e) { res.status(500).json({error:"Could not generate QR code"}); }
+});
 app.get("/qr", async (req,res) => {
   const origin = `${req.protocol}://${req.get("host")}`;
   const table = String(req.query.table || "1").replace(/[^a-zA-Z0-9-]/g,"").slice(0,20) || "1";
